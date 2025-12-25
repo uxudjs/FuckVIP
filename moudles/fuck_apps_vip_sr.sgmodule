@@ -1,5 +1,5 @@
 #!name=FuckAppsVIP
-#!desc=Endel / AdGuard / 掃描全能王 / 有道詞典 / 百度云 / 地震預警ICL / Spotify / 句读
+#!desc=Endel / AdGuard / 掃描全能王 / 有道詞典 / 百度云 / 地震預警ICL / Spotify
 #!author=ddgksf2013 / yqc007 / NobyDa / app2smile / Yu9191 / 89996462
 
 [Rule]
@@ -34,8 +34,5 @@ Spotify-Header = type=http-request, pattern=^https?:\/\/(spclient\.wg\.spotify\.
 Spotify-Proto = type=http-response, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, script-update-interval=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
 Spotify-JSON = type=http-request, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
 
-# > 句读
-Judou-Unlock = type=http-response, pattern=https://judouapp.com/api/v2/mine/profile, requires-body=1, script-path=https://ddgksf2013.top/scripts/judou.vip.js
-
 [MITM]
-hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *spclient.spotify.com, judouapp.com
+hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *spclient.spotify.com
