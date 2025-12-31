@@ -40,4 +40,4 @@ Judou-Header = type=http-request, pattern=https://judouapp.com/api/v\d/mine/prof
 Judou-Unlock = type=http-response, pattern=^https?:\/\/judouapp.com\/api\/v\d\/mine\/profile, requires-body=1, max-size=-1, timeout=60, script-path=https://ddgksf2013.top/scripts/judou.vip.js
 
 [MITM]
-hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *spclient.spotify.com, app.bilibili.com, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, 39.156.123.46, bd-api.kuwo.com, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 39.156.121.20, 111.30.171.170, 39.156.121.21, 101.42.133.54, ab-bodian.kuwo.cn, 39.156.121.65, xs.gdt.qq.com, judouapp.com
+hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *spclient.spotify.com, app.bilibili.com, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, 39.156.12*, bd-api.kuwo.com, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 111.30.171.170, 101.42.133.54, ab-bodian.kuwo.cn, xs.gdt.qq.com, judouapp.com
