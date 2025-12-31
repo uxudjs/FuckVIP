@@ -4,7 +4,10 @@
 
 [Header Rewrite]
 # > Spotify
-^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del If-None-Match
+
+# > 句读
+^https?:\/\/judouapp\.com\/api\/v\d\/mine\/profile header-del If-None-Match
 
 [Script]
 # > Endel
@@ -36,8 +39,7 @@ BilibiliHD-Unlock = type=http-response, pattern=^https?:\/\/app\.bilibili\.com\/
 Bodian-Unlock = type=http-response, pattern=^https?:\/\/(?:(?:bd-api|h5app|bodianyin|ab-bodian)\.kuwo\.cn\/(?:api\/(?:ucenter\/users\/(?:pub|login)|play\/(?:music\/v2\/(?:audioUrl|checkRight)|advert\/info)|service\/(?:music\/(?:info|download\/(?:info|config))|home\/module|global\/config\/(?:scene|vipEnter)|banner\/positions|advert\/config)|search\/topic\/word\/list|pay\/(?:vip\/(?:invitation\/(?:assist\/popup|swell)|lowPriceText)|sp\/actVip|audition\/url)|advert\/free\/config|popup\/start\/info|abtest\/ui\/info|rec\/feed)|abtest\/ui\/info)|us\.l\.qq\.com\/exapp|xs\.gdt\.qq\.com\/style_factory\/template_list), requires-body=1, max-size=-1, timeout=60, script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/bdyybata1.js
 
 # > 句读
-Judou-Header = type=http-request, pattern=https://judouapp.com/api/v\d/mine/profile, timeout=30, argument=(%5Cr%5Cn)If-None-Match%3A.%2B%3F(%5Cr%5Cn)-%3E%241%242, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-header.js
-Judou-Unlock = type=http-response, pattern=^https?:\/\/judouapp.com\/api\/v\d\/mine\/profile, requires-body=1, max-size=-1, timeout=60, script-path=https://ddgksf2013.top/scripts/judou.vip.js
+Judou-Unlock = type=http-response, pattern=^https?:\/\/judouapp\.com\/api\/v\d\/mine\/profile, requires-body=1, max-size=-1, timeout=60, script-path=https://ddgksf2013.top/scripts/judou.vip.js
 
 [MITM]
-hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *spclient.spotify.com, app.bilibili.com, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, 39.156.12*, bd-api.kuwo.com, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 111.30.171.170, 101.42.133.54, ab-bodian.kuwo.cn, xs.gdt.qq.com, judouapp.com
+hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *-spclient.spotify.com, *.spotify.com, app.bilibili.com, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, bd-api.kuwo.com, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 111.30.171.170, 101.42.133.54, ab-bodian.kuwo.cn, xs.gdt.qq.com, judouapp.com
