@@ -1,10 +1,6 @@
 #!name=FuckAppsVIP
-#!desc=Endel / AdGuard / 扫描全能王 / 有道词典 / 百度云 / 地震预警ICL / Spotify / 波点音乐 / 句读
+#!desc=Endel / AdGuard / 扫描全能王 / 有道词典 / 百度云 / 地震预警ICL / 波点音乐 / 句读
 #!author=uxudjs / ddgksf2013 / yqc007 / NobyDa / app2smile / Yu9191 / 89996462 / WeiGiegie
-
-[Header Rewrite]
-# > Spotify
-http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 
 [Script]
 # > Endel
@@ -25,11 +21,6 @@ BaiduCloud-Unlock = type=http-response, pattern=https?:\/\/pan\.baidu\.com\/rest
 # > 地震预警ICL
 ICL-Unlock = type=http-response, pattern=https?:\/\/mobile-new\.chinaeew\.cn\/v1\/order\/apple\/vip, requires-body=1, script-path=https://raw.githubusercontent.com/Yu9191/Rewrite/refs/heads/main/dzyj.js
 
-# > Spotify
-Spotify-Json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
-Spotify-Proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
-Spotify-Header = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-qx-header.js
-
 # > 波点音乐
 Bodian-Unlock = type=http-response, pattern=^https?:\/\/(?:(?:bd-api|h5app|bodianyin|ab-bodian)\.kuwo\.cn\/(?:api\/(?:ucenter\/users\/(?:pub|login)|play\/(?:music\/v2\/(?:audioUrl|checkRight)|advert\/info)|service\/(?:music\/(?:info|download\/(?:info|config))|home\/module|global\/config\/(?:scene|vipEnter)|banner\/positions|advert\/config)|search\/topic\/word\/list|pay\/(?:vip\/(?:invitation\/(?:assist\/popup|swell)|lowPriceText)|sp\/actVip|audition\/url)|advert\/free\/config|popup\/start\/info|abtest\/ui\/info|rec\/feed)|abtest\/ui\/info)|us\.l\.qq\.com\/exapp|xs\.gdt\.qq\.com\/style_factory\/template_list), requires-body=1, max-size=-1, timeout=60, script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/bdyybata1.js
 
@@ -38,4 +29,4 @@ Judou-ReplaceHeader = type=http-request, pattern=https://judouapp.com/api/v\d/mi
 Judou-Unlock = type=http-response, pattern=^https?:\/\/judouapp.com\/api\/v\d\/mine\/profile, script-path=https://ddgksf2013.top/scripts/judou.vip.js, requires-body=true, max-size=-1, timeout=
 
 [MITM]
-hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, spclient.wg.spotify.com, *-spclient.spotify.com, judouapp.com, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, 39.156.123.46:443, bd-api.kuwo.com, 39.156.123.46, 39.156.12*.*:443, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 39.156.121.20:443, 111.30.171.170:443, 39.156.121.21:443, 101.42.133.54:443, ab-bodian.kuwo.cn, 39.156.121.65:443, 39.156.121.*:443, bd-api.kuwo.cn:443, ab-bodian.kuwo.cn:443, 39.156.121.60:80, xs.gdt.qq.com
+hostname = %APPEND% api-production.endel.io, mobile-api.adguard.org, *.intsig.net, dict.youdao.com, pan.baidu.com, mobile-new.chinaeew.cn, judouapp.com, bd-api.kuwo.cn, *.kuwo.*, ad.tencentmusic.com, *.l.qq.com, 39.156.123.46:443, bd-api.kuwo.com, 39.156.123.46, 39.156.12*.*:443, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, h5s.kuwo.cn, 39.156.121.20:443, 111.30.171.170:443, 39.156.121.21:443, 101.42.133.54:443, ab-bodian.kuwo.cn, 39.156.121.65:443, 39.156.121.*:443, bd-api.kuwo.cn:443, ab-bodian.kuwo.cn:443, 39.156.121.60:80, xs.gdt.qq.com
